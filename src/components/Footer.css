@@ -1,0 +1,30 @@
+.footer {
+  background: rgba(15, 23, 42, 0.8);
+  border-top: 1px solid rgba(99, 102, 241, 0.2);
+  padding: var(--spacing-md) 0;
+  margin-top: var(--spacing-xl);
+}
+
+.footer .container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--font-size-base);
+}
+
+.footer-note {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--spacing-sm) 0;
+  }
+}
