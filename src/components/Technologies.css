@@ -1,0 +1,123 @@
+.technologies-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.technologies-carousel {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+.carousel-track {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  animation: slideInfinite 20s linear infinite;
+}
+
+.technologies-carousel:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+.tech-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.tech-icon-wrapper:hover {
+  transform: scale(1.2) translateY(-5px);
+}
+
+.tech-icon {
+  font-size: 4rem;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.tech-icon-wrapper:hover .tech-icon {
+  transform: rotate(5deg);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.tech-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.tech-icon-wrapper:hover .tech-name {
+  color: var(--tech-color);
+}
+
+.pause-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(102, 126, 234, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  pointer-events: none;
+  z-index: 10;
+  animation: fadeInOut 1s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInfinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-track {
+    gap: 2rem;
+  }
+  
+  .tech-icon {
+    font-size: 3rem;
+  }
+  
+  .tech-icon-wrapper {
+    min-width: 80px;
+  }
+  
+  .tech-name {
+    font-size: 0.8rem;
+  }
+}
+
