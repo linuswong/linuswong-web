@@ -19,6 +19,43 @@ const Experience = () => {
   const characterRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Generate windy road path that matches the character's zigzag movement
+  const generateWindyPath = (): string => {
+    const steps = 80;
+    const pathPoints: string[] = [];
+    const maxOffset = 30; // Same as character zigzag offset (30%)
+    
+    // Start from center
+    pathPoints.push(`50 0`);
+    
+    for (let i = 1; i <= steps; i++) {
+      const progress = i / steps;
+      const y = progress * 100; // 0 to 100% down
+      // Same sine function as character uses: Math.sin(progress * Math.PI * 4) * 30
+      const xOffset = Math.sin(progress * Math.PI * 4) * maxOffset;
+      const x = 50 + xOffset; // Center (50) with offset
+      pathPoints.push(`${x} ${y}`);
+    }
+    
+    // Create smooth path using quadratic bezier curves
+    let path = '';
+    for (let i = 0; i < pathPoints.length - 1; i++) {
+      const [x, y] = pathPoints[i].split(' ').map(Number);
+      const [nextX, nextY] = pathPoints[i + 1].split(' ').map(Number);
+      
+      if (i === 0) {
+        path += `L ${x} ${y} `;
+      }
+      
+      // Use quadratic bezier for smooth curves
+      const controlX = (x + nextX) / 2;
+      const controlY = (y + nextY) / 2;
+      path += `Q ${controlX} ${controlY} ${nextX} ${nextY} `;
+    }
+    
+    return path.trim();
+  };
+
   const experiences: ExperienceItem[] = [
     {
       title: 'Software Engineer Intern',
@@ -94,15 +131,18 @@ const Experience = () => {
       });
     }, observerOptions);
 
+    // Capture current refs value to use in cleanup
+    const currentItemRefs = itemRefs.current;
+
     // Observe all items that are mounted
-    itemRefs.current.forEach((item) => {
+    currentItemRefs.forEach((item) => {
       if (item) {
         observer.observe(item);
       }
     });
 
     return () => {
-      itemRefs.current.forEach((item) => {
+      currentItemRefs.forEach((item) => {
         if (item) {
           observer.unobserve(item);
         }
@@ -148,6 +188,18 @@ const Experience = () => {
       <div className="container">
         <h2 className="section-title">Experience</h2>
         <div className="experience-timeline-wrapper" ref={timelineRef}>
+          {/* Windy Road Track - SVG path following zigzag pattern */}
+          <svg className="windy-road-track" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path
+              className="road-path"
+              d={`M 50 0 ${generateWindyPath()}`}
+              fill="none"
+              stroke="#ff6b6b"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
           <div 
             className="timeline-character" 
             ref={characterRef}

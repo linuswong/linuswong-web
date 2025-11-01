@@ -31,10 +31,25 @@
   z-index: 1;
 }
 
+.windy-road-track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.road-path {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
 .timeline-character {
   position: absolute;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
   transition: transform 0.1s ease-out, opacity 0.1s ease-out;
 }

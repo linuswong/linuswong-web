@@ -153,6 +153,49 @@ const Projects = () => {
       <div className="container">
         <h2 className="section-title">Projects</h2>
         
+        {/* Top 3 Podium */}
+        <div className="podium-section">
+          <h3 className="podium-title">Top 3 Personal Favorites</h3>
+          <div className="podium-container fade-in-on-scroll">
+            {top3Projects.map((project) => {
+              // Order: 1st place in middle, 2nd on left, 3rd on right
+              const order = project.rank === 1 ? 2 : project.rank === 2 ? 1 : 3;
+              
+              return (
+                <div key={project.title} className={`podium-item rank-${project.rank}`} style={{ order }}>
+                  <div className="podium-stand">
+                    <div className="podium-number">{project.rank}</div>
+                  </div>
+                  <div className="podium-project">
+                    <h4>{project.title}</h4>
+                    <p>{project.description}</p>
+                    <div className="project-technologies">
+                      {project.technologies.map((tech, index) => (
+                        <span key={index} className="tech-badge">{tech}</span>
+                      ))}
+                    </div>
+                    <div className="project-links">
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                          GitHub
+                        </a>
+                      )}
+                      {project.demo && (
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link">
+                          Demo
+                        </a>
+                      )}
+                    </div>
+                    <span className={`category-badge category-${project.category.toLowerCase().replace('/', '-')}`}>
+                      {project.category}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Search and Filter */}
         <div className="projects-controls">
           <div className="search-container">
@@ -204,49 +247,6 @@ const Projects = () => {
             )}
           </div>
         )}
-
-        {/* Top 3 Podium */}
-        <div className="podium-section">
-          <h3 className="podium-title">Top 3 Personal Favorites</h3>
-          <div className="podium-container fade-in-on-scroll">
-            {top3Projects.map((project) => {
-              const podiumHeight = project.rank === 1 ? '100%' : project.rank === 2 ? '80%' : '60%';
-              const order = project.rank === 1 ? 2 : project.rank === 2 ? 1 : 3;
-              
-              return (
-                <div key={project.title} className={`podium-item rank-${project.rank}`} style={{ order }}>
-                  <div className="podium-stand" style={{ height: podiumHeight }}>
-                    <div className="podium-number">{project.rank}</div>
-                  </div>
-                  <div className="podium-project">
-                    <h4>{project.title}</h4>
-                    <p>{project.description}</p>
-                    <div className="project-technologies">
-                      {project.technologies.map((tech, index) => (
-                        <span key={index} className="tech-badge">{tech}</span>
-                      ))}
-                    </div>
-                    <div className="project-links">
-                      {project.github && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
-                          GitHub
-                        </a>
-                      )}
-                      {project.demo && (
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link">
-                          Demo
-                        </a>
-                      )}
-                    </div>
-                    <span className={`category-badge category-${project.category.toLowerCase().replace('/', '-')}`}>
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Misc Projects */}
         {miscProjects.length > 0 && (
