@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './Experience.css';
+import racecarImage from '../assets/racecar.png';
 
 interface ExperienceItem {
   title: string;
@@ -13,7 +14,6 @@ interface ExperienceItem {
 const Experience = () => {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [characterPosition, setCharacterPosition] = useState({ top: 0, left: 0 });
-  const [characterAge, setCharacterAge] = useState(100); // Starts old (100%)
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
   const timelineRef = useRef<HTMLDivElement>(null);
   const characterRef = useRef<HTMLDivElement>(null);
@@ -172,9 +172,6 @@ const Experience = () => {
         top: characterTop, 
         left: characterLeft 
       });
-      
-      // Age from older (100%) to younger (0%) as we scroll down
-      setCharacterAge(100 - (progress * 100));
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -206,12 +203,19 @@ const Experience = () => {
             style={{
               top: `${characterPosition.top}px`,
               left: `${characterPosition.left}%`,
-              transform: `scale(${0.5 + (characterAge / 100) * 0.5})`, // Scales up as gets younger
-              opacity: 0.5 + (characterAge / 100) * 0.5 // Gets more visible as gets younger
+              opacity: 1
             }}
           >
-            <div className="character-emoji" style={{ fontSize: `${20 + characterAge / 2}px` }}>
-              🏃
+            <div className="character-emoji" style={{ fontSize: '140px' }}>
+              <img 
+                src={racecarImage} 
+                alt="Race car" 
+                style={{ 
+                  width: '140px',
+                  height: '140px',
+                  objectFit: 'contain'
+                }}
+              />
             </div>
           </div>
           <div className="timeline-line"></div>
