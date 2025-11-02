@@ -194,7 +194,7 @@ const Experience = () => {
               className="road-path"
               d={`M 50 0 ${generateWindyPath()}`}
               fill="none"
-              stroke="#ff6b6b"
+              stroke="#FFD700"
               strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"

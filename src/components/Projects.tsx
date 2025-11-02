@@ -17,7 +17,7 @@ const Projects = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<'ML/AI' | 'SWE' | 'All'>('All');
 
-  const projects: Project[] = [
+  const projects: Project[] = useMemo(() => [
     {
       title: 'AI Image Classifier',
       description: 'Deep learning model for image classification using convolutional neural networks. Achieved 95% accuracy on CIFAR-10 dataset with transfer learning techniques.',
@@ -85,7 +85,7 @@ const Projects = () => {
       github: 'https://github.com',
       demo: 'https://demo.com'
     }
-  ];
+  ], []);
 
   // Technology similarity mapping for related technologies
   const technologyRelations: Record<string, string[]> = {
@@ -103,19 +103,21 @@ const Projects = () => {
       project.technologies.forEach(tech => techSet.add(tech));
     });
     return Array.from(techSet);
-  }, []);
+  }, [projects]);
 
   const filteredProjects = useMemo(() => {
-    let filtered = projects;
+    // Start with all projects - always create a new array reference
+    let filtered = projects.slice();
 
-    // Filter by category
+    // Filter by category first
     if (selectedCategory !== 'All') {
       filtered = filtered.filter(project => project.category === selectedCategory);
     }
 
-    // Filter by search query
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase().trim();
+    // Filter by search query only if there's a non-empty query
+    const trimmedQuery = searchQuery.trim();
+    if (trimmedQuery.length > 0) {
+      const query = trimmedQuery.toLowerCase();
       filtered = filtered.filter(project => {
         const techMatch = project.technologies.some(tech => 
           tech.toLowerCase().includes(query)
@@ -125,11 +127,18 @@ const Projects = () => {
         return techMatch || titleMatch || descMatch;
       });
     }
+    // If searchQuery is empty, return all projects (filtered by category only)
 
     return filtered;
   }, [searchQuery, selectedCategory, projects]);
 
-  const top3Projects = projects.filter(p => p.isTop3).sort((a, b) => (a.rank || 0) - (b.rank || 0));
+  const top3Projects = useMemo(() => 
+    projects.filter(p => p.isTop3).sort((a, b) => (a.rank || 0) - (b.rank || 0)),
+    [projects]
+  );
+  
+  // Don't memoize miscProjects - compute it directly from filteredProjects
+  // This ensures it always recalculates when filteredProjects changes
   const miscProjects = filteredProjects.filter(p => !p.isTop3);
 
   const getRelatedTechnologies = (query: string): string[] => {
@@ -145,7 +154,8 @@ const Projects = () => {
     return Array.from(new Set(related)).slice(0, 5);
   };
 
-  const showNoResults = searchQuery.trim() && filteredProjects.length === 0;
+  // Only show no results if search query exists AND no projects match at all (including top3)
+  const showNoResults = searchQuery.trim().length > 0 && filteredProjects.length === 0;
   const relatedTechs = showNoResults ? getRelatedTechnologies(searchQuery) : [];
 
   return (
@@ -248,11 +258,11 @@ const Projects = () => {
           </div>
         )}
 
-        {/* Misc Projects */}
-        {miscProjects.length > 0 && (
-          <div className="misc-projects-section">
+        {/* Misc Projects - Always show when there are misc projects */}
+        {miscProjects && miscProjects.length > 0 && (
+          <div className="misc-projects-section" key={`misc-${searchQuery}-${miscProjects.length}`}>
             <h3 className="misc-title">Other Projects</h3>
-            <div className="projects-grid fade-in-on-scroll">
+            <div className="projects-grid">
               {miscProjects.map((project, index) => (
                 <div key={index} className="project-card">
                   <div className="project-header">

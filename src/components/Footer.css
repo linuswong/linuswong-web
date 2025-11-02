@@ -1,5 +1,5 @@
 .footer {
-  background: #2d2d2d;
+  background: #0C0C0C;
   color: white;
   padding: 3rem 2rem 1.5rem;
 }
@@ -25,7 +25,7 @@
 .footer-title {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #667eea;
+  color: #D50000;
 }
 
 .footer-links {
@@ -42,7 +42,7 @@
 }
 
 .footer-link:hover {
-  color: #667eea;
+  color: #D50000;
   padding-left: 0.5rem;
 }
 
