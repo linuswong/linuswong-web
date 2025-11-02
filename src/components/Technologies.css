@@ -1,6 +1,7 @@
 .technologies-section {
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #F5F5F5 0%, #C0C0C0 100%);
+  background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%) !important;
+  color: white;
 }
 
 .container {
@@ -12,7 +13,7 @@
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
-  color: #0C0C0C;
+  color: white;
 }
 
 .technologies-carousel {
@@ -61,7 +62,7 @@
 .tech-name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #2A2A2A;
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
   transition: color 0.3s ease;
 }

@@ -1,6 +1,7 @@
 .contact-section {
   padding: 4rem 2rem;
-  background: white;
+  background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%) !important;
+  color: white;
 }
 
 .container {
@@ -12,7 +13,7 @@
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
-  color: #0C0C0C;
+  color: white;
 }
 
 .contact-content {
@@ -23,7 +24,7 @@
 
 .contact-description {
   font-size: 1.1rem;
-  color: #2A2A2A;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.8;
   margin-bottom: 2rem;
 }
@@ -39,20 +40,23 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 1.5rem;
-  background: #F5F5F5;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .contact-item:hover {
-  background: #e9ecef;
+  background: rgba(255, 255, 255, 0.15) !important;
   transform: translateY(-3px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .contact-label {
   font-weight: 600;
-  color: #0C0C0C;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -66,7 +70,7 @@
 }
 
 .contact-value:hover {
-  color: #D50000;
+  color: #ff3333;
   text-decoration: underline;
 }
 

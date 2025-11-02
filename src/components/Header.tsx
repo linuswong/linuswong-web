@@ -6,7 +6,7 @@ const Header = () => {
       <section className="hero">
         <h1 className="hero-title">Hi, I'm Linus Wong</h1>
         <p className="hero-bio">
-          I'm currently studying Electrical and Computer Engineering at Santa Clara University and I am a Software Engineer.
+        I'm an aspiring Software Engineer and an Electrical and Computer Engineering student at Santa Clara University.
         </p>
       </section>
       <nav className="quick-info">
