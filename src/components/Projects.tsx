@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import './Projects.css';
+import projectsData from '../data/projects.json';
 
 interface Project {
   title: string;
@@ -17,85 +18,10 @@ const Projects = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<'ML/AI' | 'SWE' | 'All'>('All');
 
-  const projects: Project[] = useMemo(() => [
-    {
-      title: 'AI Image Classifier',
-      description: 'Deep learning model for image classification using convolutional neural networks. Achieved 95% accuracy on CIFAR-10 dataset with transfer learning techniques.',
-      technologies: ['Python', 'TensorFlow', 'Keras', 'OpenCV', 'NumPy'],
-      category: 'ML/AI',
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      isTop3: true,
-      rank: 1
-    },
-    {
-      title: 'Full Stack E-Commerce Platform',
-      description: 'Complete e-commerce solution with user authentication, payment processing, and admin dashboard. Built with modern web technologies and deployed on cloud infrastructure.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe', 'AWS'],
-      category: 'SWE',
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      isTop3: true,
-      rank: 2
-    },
-    {
-      title: 'Predictive Analytics Dashboard',
-      description: 'Real-time data visualization dashboard with machine learning predictions. Features interactive charts, live data streaming, and customizable widgets.',
-      technologies: ['Python', 'React', 'D3.js', 'Flask', 'PostgreSQL', 'Docker'],
-      category: 'ML/AI',
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      isTop3: true,
-      rank: 3
-    },
-    {
-      title: 'Portfolio Website',
-      description: 'Responsive personal portfolio website with modern design and smooth animations. Built with React and TypeScript.',
-      technologies: ['React', 'TypeScript', 'CSS3', 'Vite'],
-      category: 'SWE',
-      github: 'https://github.com',
-      demo: 'https://demo.com'
-    },
-    {
-      title: 'NLP Sentiment Analyzer',
-      description: 'Natural language processing application that analyzes sentiment in text data. Uses transformer models for high accuracy.',
-      technologies: ['Python', 'Transformers', 'NLTK', 'Streamlit'],
-      category: 'ML/AI',
-      github: 'https://github.com'
-    },
-    {
-      title: 'Task Management API',
-      description: 'RESTful API for task management with user roles, authentication, and real-time updates. Includes comprehensive documentation.',
-      technologies: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Socket.io'],
-      category: 'SWE',
-      github: 'https://github.com'
-    },
-    {
-      title: 'Computer Vision Project',
-      description: 'Object detection system using YOLO architecture. Can detect and classify multiple objects in real-time video streams.',
-      technologies: ['Python', 'PyTorch', 'OpenCV', 'YOLO', 'CUDA'],
-      category: 'ML/AI',
-      github: 'https://github.com'
-    },
-    {
-      title: 'Cloud Storage App',
-      description: 'File storage application with drag-and-drop interface. Features encryption, sharing capabilities, and version control.',
-      technologies: ['React', 'TypeScript', 'Firebase', 'TailwindCSS', 'AWS S3'],
-      category: 'SWE',
-      github: 'https://github.com',
-      demo: 'https://demo.com'
-    }
-  ], []);
+  const projects: Project[] = useMemo(() => projectsData.projects as Project[], []);
 
   // Technology similarity mapping for related technologies
-  const technologyRelations: Record<string, string[]> = {
-    'Python': ['Java', 'JavaScript', 'C++', 'R'],
-    'React': ['Vue', 'Angular', 'Svelte'],
-    'Node.js': ['Deno', 'Bun', 'Express'],
-    'MongoDB': ['PostgreSQL', 'MySQL', 'Firebase'],
-    'TensorFlow': ['PyTorch', 'Keras', 'Scikit-learn'],
-    'TypeScript': ['JavaScript', 'Flow', 'Dart']
-  };
+  const technologyRelations: Record<string, string[]> = projectsData.technologyRelations as Record<string, string[]>;
 
   const allTechnologies = useMemo(() => {
     const techSet = new Set<string>();

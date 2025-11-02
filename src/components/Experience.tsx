@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './Experience.css';
 import racecarImage from '../assets/racecar.png';
+import experienceData from '../data/experience.json';
 
 interface ExperienceItem {
   title: string;
@@ -56,55 +57,7 @@ const Experience = () => {
     return path.trim();
   };
 
-  const experiences: ExperienceItem[] = [
-    {
-      title: 'Software Engineer Intern',
-      company: 'Tech Company',
-      period: '2024 - Present',
-      description: [
-        'Developed and maintained web applications using React and TypeScript',
-        'Collaborated with cross-functional teams to deliver high-quality software solutions',
-        'Implemented responsive designs and optimized application performance'
-      ],
-      projectLink: '#projects',
-      tags: ['Full Stack', 'React', 'TypeScript']
-    },
-    {
-      title: 'Junior Developer',
-      company: 'Startup Inc',
-      period: '2023 - 2024',
-      description: [
-        'Built frontend components using modern JavaScript frameworks',
-        'Participated in code reviews and agile development processes',
-        'Contributed to improving codebase quality and documentation'
-      ],
-      projectLink: '#projects',
-      tags: ['Frontend', 'JavaScript']
-    },
-    {
-      title: 'Student Researcher',
-      company: 'Santa Clara University',
-      period: '2022 - 2023',
-      description: [
-        'Conducted research in machine learning and computer vision',
-        'Published findings in academic journals',
-        'Presented research at university conferences'
-      ],
-      projectLink: '#projects',
-      tags: ['ML/AI', 'Research']
-    },
-    {
-      title: 'Freelance Web Developer',
-      company: 'Self Employed',
-      period: '2021 - 2022',
-      description: [
-        'Created custom websites for small businesses',
-        'Managed client relationships and project timelines',
-        'Learned various web technologies through hands-on projects'
-      ],
-      tags: ['Web Development']
-    }
-  ];
+  const experiences: ExperienceItem[] = experienceData as ExperienceItem[];
 
   // Intersection Observer for experience items - once visible, stay visible
   useEffect(() => {
