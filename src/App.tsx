@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Header from './components/Header';
 import Experience from './components/Experience';
+import CheckeredFlag from './components/CheckeredFlag';
 import Projects from './components/Projects';
 import Technologies from './components/Technologies';
 import Certifications from './components/Certifications';
@@ -65,6 +66,7 @@ function App() {
       <Header />
       <main>
         <Experience />
+        <CheckeredFlag />
         <Projects />
         <Technologies />
         <Certifications />

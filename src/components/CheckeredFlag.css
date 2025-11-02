@@ -1,0 +1,54 @@
+.checkered-flag-section {
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.checkered-pattern {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+}
+
+.pattern-row {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.pattern-square {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.pattern-square.white {
+  background: #FFFFFF;
+}
+
+.pattern-square.black {
+  background: #0C0C0C;
+}
+
+@media (max-width: 1200px) {
+  .pattern-square {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pattern-square {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pattern-square {
+    width: 25px;
+    height: 25px;
+  }
+}
+
