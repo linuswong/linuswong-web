@@ -20,18 +20,42 @@
   position: relative;
   overflow: hidden;
   padding: 2rem 0;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 6%,
+    rgba(0, 0, 0, 0.85) 20%,
+    rgba(0, 0, 0, 0.85) 80%,
+    rgba(0, 0, 0, 0.2) 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 6%,
+    rgba(0, 0, 0, 0.85) 20%,
+    rgba(0, 0, 0, 0.85) 80%,
+    rgba(0, 0, 0, 0.2) 94%,
+    transparent 100%
+  );
 }
 
 .carousel-track {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 3rem;
-  flex-wrap: wrap;
-  animation: slideInfinite 20s linear infinite;
+  flex-wrap: nowrap;
+  width: max-content;
+  will-change: transform;
+  animation: conveyor 60s linear infinite;
 }
 
 .technologies-carousel:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+.carousel-track.is-paused {
   animation-play-state: paused;
 }
 
@@ -41,6 +65,7 @@
   align-items: center;
   gap: 0.75rem;
   min-width: 100px;
+  flex: 0 0 auto;
   transition: transform 0.3s ease;
 }
 
@@ -71,31 +96,7 @@
   color: var(--tech-color);
 }
 
-.pause-indicator {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(213, 0, 0, 0.9);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  pointer-events: none;
-  z-index: 10;
-  animation: fadeInOut 1s ease-in-out infinite;
-}
-
-@keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes slideInfinite {
+@keyframes conveyor {
   0% {
     transform: translateX(0);
   }

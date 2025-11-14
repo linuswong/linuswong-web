@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useMemo, useState, type ReactNode, type CSSProperties } from 'react';
 import { 
   FaReact, FaNode, FaPython, FaJava, FaJs, FaGitAlt, FaDocker
 } from 'react-icons/fa';
@@ -12,16 +12,11 @@ import './Technologies.css';
 
 interface Technology {
   name: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   color: string;
 }
 
-const Technologies = () => {
-  const [isPaused, setIsPaused] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  const technologies: Technology[] = [
+const TECHNOLOGIES: Technology[] = [
     { name: 'React', icon: <FaReact />, color: '#61DAFB' },
     { name: 'TypeScript', icon: <SiTypescript />, color: '#3178C6' },
     { name: 'Node.js', icon: <FaNode />, color: '#339933' },
@@ -49,23 +44,15 @@ const Technologies = () => {
     { name: 'Elasticsearch', icon: <SiElasticsearch />, color: '#005571' },
     { name: 'Nginx', icon: <SiNginx />, color: '#009639' },
     { name: 'Jenkins', icon: <SiJenkins />, color: '#D24939' }
-  ];
+];
 
-  useEffect(() => {
-    if (isPaused) return;
+const Technologies = () => {
+  const [isPaused, setIsPaused] = useState(false);
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % technologies.length);
-    }, 2000); // Change icon every 2 seconds
-
-    return () => clearInterval(interval);
-  }, [isPaused, technologies.length]);
-
-  // Create a circular array for smooth infinite scrolling
-  const visibleTechnologies = [
-    ...technologies.slice(currentIndex),
-    ...technologies.slice(0, currentIndex)
-  ].slice(0, 8); // Show 8 icons at a time
+  const marqueeTechnologies = useMemo(
+    () => [...TECHNOLOGIES, ...TECHNOLOGIES],
+    []
+  );
 
   return (
     <section id="technologies" className="technologies-section">
@@ -75,16 +62,17 @@ const Technologies = () => {
           className="technologies-carousel fade-in-on-scroll"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          ref={carouselRef}
         >
-          <div className="carousel-track">
-            {visibleTechnologies.map((tech, index) => (
+          <div
+            className={`carousel-track${isPaused ? ' is-paused' : ''}`}
+          >
+            {marqueeTechnologies.map((tech, index) => (
               <div
                 key={`${tech.name}-${index}`}
                 className="tech-icon-wrapper"
                 style={{
                   '--tech-color': tech.color
-                } as React.CSSProperties}
+                } as CSSProperties}
               >
                 <div className="tech-icon" style={{ color: tech.color }}>
                   {tech.icon}
@@ -93,9 +81,6 @@ const Technologies = () => {
               </div>
             ))}
           </div>
-          {isPaused && (
-            <div className="pause-indicator">Paused - Hover to Resume</div>
-          )}
         </div>
       </div>
     </section>
