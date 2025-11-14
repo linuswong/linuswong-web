@@ -10,9 +10,9 @@ const Header = () => {
         </p>
       </section>
       <nav className="quick-info">
-        <a href="#resume" className="quick-link">Resume</a>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="quick-link">GitHub</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="quick-link">LinkedIn</a>
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="quick-link">Resume</a>
+        <a href="https://github.com/linuswong" target="_blank" rel="noopener noreferrer" className="quick-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/linus-e-wong/" target="_blank" rel="noopener noreferrer" className="quick-link">LinkedIn</a>
         <a href="#contact" className="quick-link">Contact Me</a>
       </nav>
     </header>

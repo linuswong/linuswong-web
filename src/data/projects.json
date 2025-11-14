@@ -1,42 +1,40 @@
 {
   "projects": [
     {
-      "title": "AI Image Classifier",
-      "description": "Deep learning model for image classification using convolutional neural networks. Achieved 95% accuracy on CIFAR-10 dataset with transfer learning techniques.",
-      "technologies": ["Python", "TensorFlow", "Keras", "OpenCV", "NumPy"],
-      "category": "ML/AI",
-      "github": "https://github.com",
-      "demo": "https://demo.com",
+      "title": "Apple Vision Pro Application",
+      "description": "Collaborated with ByteDance to develop and showcase an interactive AR/XR cooking assistant using their WebSpatial SDK. Built a dynamic, multimedia recipe workflow with modular pop-out timers for seamless multitasking, and deployed the production build via Vercel and the App Store.",
+      "technologies": ["Python", "React", "Vercel", "App Store","WebSpatial SDK","AR/XR"],
+      "category": "SWE",
+      "github": "https://github.com/tiffiyyy/simmerSpace",
+      "demo": "https://apps.apple.com/us/app/simmerspace/id6753581534?platform=vision",
       "isTop3": true,
       "rank": 1
     },
     {
-      "title": "Full Stack E-Commerce Platform",
-      "description": "Complete e-commerce solution with user authentication, payment processing, and admin dashboard. Built with modern web technologies and deployed on cloud infrastructure.",
-      "technologies": ["React", "Node.js", "MongoDB", "Express", "Stripe", "AWS"],
+      "title": "AWS Based Student Engagement Platform",
+      "description": "Built and deployed a scalable, serverless backend on AWS using Lambda, API Gateway, and DynamoDB for a student engagement platform. Integrated AI features with AWS Bedrock and optimized database performance by reducing query complexity from O(n) to O(1) through a custom Python automation script.",
+      "technologies": ["Python", "AWS", "Lambda", "API Gateway", "DynamoDB", "Bedrock","EC2"],
       "category": "SWE",
-      "github": "https://github.com",
-      "demo": "https://demo.com",
+      "github": "https://github.com/tiffiyyy/Lumera",
+      "demo": "https://youtu.be/FYqEpkLKJ3A",
       "isTop3": true,
       "rank": 2
     },
     {
-      "title": "Predictive Analytics Dashboard",
-      "description": "Real-time data visualization dashboard with machine learning predictions. Features interactive charts, live data streaming, and customizable widgets.",
-      "technologies": ["Python", "React", "D3.js", "Flask", "PostgreSQL", "Docker"],
-      "category": "ML/AI",
-      "github": "https://github.com",
-      "demo": "https://demo.com",
+      "title": "Fake Call Android Application",
+      "description": "Developed an Android app in Kotlin that simulates customizable fake calls, featuring CRUD operations for call logs, settings, and contacts with persistent storage. Designed a smooth, intuitive UI/UX and collaborated using Agile practices and Git for version control.",
+      "technologies": ["Kotlin", "Android", "UI/UX", "Agile", "Git"],
+      "category": "SWE",
+      "github": "https://github.com/linuswong/FakeCall",
       "isTop3": true,
       "rank": 3
     },
     {
       "title": "Portfolio Website",
       "description": "Responsive personal portfolio website with modern design and smooth animations. Built with React and TypeScript.",
-      "technologies": ["React", "TypeScript", "CSS3", "Vite"],
+      "technologies": ["React", "TypeScript", "CSS3", "Vite", "HTML5"],
       "category": "SWE",
-      "github": "https://github.com",
-      "demo": "https://demo.com"
+      "github": "https://github.com/linuswong/linuswong-web"
     },
     {
       "title": "NLP Sentiment Analyzer",
@@ -69,7 +67,7 @@
     }
   ],
   "technologyRelations": {
-    "Python": ["Java", "JavaScript", "C++", "R"],
+    "Python": ["Java", "JavaScript", "TypeScript", "C"],
     "React": ["Vue", "Angular", "Svelte"],
     "Node.js": ["Deno", "Bun", "Express"],
     "MongoDB": ["PostgreSQL", "MySQL", "Firebase"],

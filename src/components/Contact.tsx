@@ -13,14 +13,14 @@ const Contact = () => {
             <div className="contact-methods">
               <div className="contact-item">
                 <span className="contact-label">Email:</span>
-                <a href="mailto:linus.wong@example.com" className="contact-value">
-                  linus.wong@example.com
+                <a href="mailto:linuswong9@gmail.com" className="contact-value">
+                  linuswong9@gmail.com
                 </a>
               </div>
               <div className="contact-item">
                 <span className="contact-label">LinkedIn:</span>
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://www.linkedin.com/in/linus-e-wong/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="contact-value"
@@ -31,7 +31,7 @@ const Contact = () => {
               <div className="contact-item">
                 <span className="contact-label">GitHub:</span>
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/linuswong" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="contact-value"

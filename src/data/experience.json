@@ -1,50 +1,27 @@
 [
   {
-    "title": "Software Engineer Intern",
-    "company": "Tech Company",
-    "period": "2024 - Present",
+    "title": "Software Engineer Research Intern",
+    "company": "Algoverse AI Research",
+    "period": "August 2025 - Present",
     "description": [
-      "Developed and maintained web applications using React and TypeScript",
-      "Collaborated with cross-functional teams to deliver high-quality software solutions",
-      "Implemented responsive designs and optimized application performance"
+      "Researching interpretability methods to evaluate whether LLMs' internal activations faithfully represent multi-step reasoning chains aimed for submission to ICLR 2025 Workshop",
+      "Designing experiments using DeepSeek and Llama models to explore feature modularity and causal dependencies with sparse autoencoders and activation patching.",
+      "Investigating quantitative metrics such as Causal Faithfulness Score and Temporal Alignment Score to assess internal reasoning consistency."
     ],
     "projectLink": "#projects",
-    "tags": ["Full Stack", "React", "TypeScript"]
+    "tags": ["AI", "Research", "Interpretability",  "Python"]
   },
   {
-    "title": "Junior Developer",
-    "company": "Startup Inc",
-    "period": "2023 - 2024",
+    "title": "Founder, Lead Software Engineer",
+    "company": "Stealth AI",
+    "period": "May 2025 - Present",
     "description": [
-      "Built frontend components using modern JavaScript frameworks",
-      "Participated in code reviews and agile development processes",
-      "Contributed to improving codebase quality and documentation"
+      "Designed and implemented a mobile AI agent integrating computer vision and facial recognition for real-time assistance.",
+      "Developed backend services in Python (Flask) and deployed optimized AI models using edge inference frameworks",
+      "Engineered a pipeline for face detection and re-identification, leveraging embeddings to improve recognition accuracy."
     ],
     "projectLink": "#projects",
-    "tags": ["Frontend", "JavaScript"]
-  },
-  {
-    "title": "Student Researcher",
-    "company": "Santa Clara University",
-    "period": "2022 - 2023",
-    "description": [
-      "Conducted research in machine learning and computer vision",
-      "Published findings in academic journals",
-      "Presented research at university conferences"
-    ],
-    "projectLink": "#projects",
-    "tags": ["ML/AI", "Research"]
-  },
-  {
-    "title": "Freelance Web Developer",
-    "company": "Self Employed",
-    "period": "2021 - 2022",
-    "description": [
-      "Created custom websites for small businesses",
-      "Managed client relationships and project timelines",
-      "Learned various web technologies through hands-on projects"
-    ],
-    "tags": ["Web Development"]
+    "tags": ["AI", "Computer Vision", "Facial Recognition", "Python", "Flask", "React Native"]
   }
 ]
 
